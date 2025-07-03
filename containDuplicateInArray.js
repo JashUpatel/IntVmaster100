@@ -69,26 +69,36 @@ var containsDuplicateUsingSet = function (nums) {
   return false;
 };
 
-// using concept of Linked List
+// using concept of Linked List but cant used  in this problem as it may have no duplicate
 // by find loop in LL we can find duplicate element
-// dont understad the logic
+// this approach is known as hare and tortoise approach
+// where there are 2 pointer one moves with single index the other twice the index
+// when they meet at single point that meens there is a cycle in array/LL
+// mean there is a duplicate element
+// this approach can only be used following 2 conditions
+// 1 - given there is duplicate element in array for sure
+// 2 -  we can use elements as index and traverse through it
 // most optimal
 // TC - O(n)  SC - O(1)
 var containsDuplicateUsingLL = function (nums) {
   let slow = 0;
   let fast = 0;
 
+  // to indentify the cycle in the array
+  // repeat until they meet i.e slow == fast
   do {
     slow = nums[slow];
     fast = nums[nums[fast]];
   } while (slow != fast);
 
+  // to indetify the repeating element
   slow = 0;
   while (slow != fast) {
     slow = nums[slow];
     fast = nums[fast];
   }
 
+  // return any pointer slow/fast both would point to same element
   return slow;
 };
 
