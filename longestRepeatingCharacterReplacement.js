@@ -18,7 +18,7 @@ const s =
   "IMNJJTRMJEGMSOLSCCQICIHLQIOGBJAEHQOCRAJQMBIBATGLJDTBNCPIFRDLRIJHRABBJGQAOLIKRLHDRIGERENNMJSDSSMESSTR";
 
 const k = 2;
-// o/p - 5
+// o/p - 6
 
 // brute force approach missing edge cases for whatsoever reason
 var characterReplacement = function (s, k) {
@@ -82,7 +82,7 @@ var characterReplacementUsingSW = function (s, k) {
     freqs[s[j]] = (freqs[s[j]] || 0) + 1;
     maxFreq = Math.max(maxFreq, freqs[s[j]]);
 
-    while (j - i + 1 - maxFreq > k) {
+    if (j - i + 1 - maxFreq > k) {
       freqs[s[i]] -= 1;
       i++;
     }
